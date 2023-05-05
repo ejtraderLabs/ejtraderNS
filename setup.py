@@ -37,7 +37,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
         "Intended Audience :: Developers",
-        "Topic :: Office/Business :: Financial :: news",
+        "Topic :: Office/Business :: Financial :: News",
         "Topic :: Office/Business :: Financial :: Investment",
         "Topic :: Scientific/Engineering :: Information Analysis",
         "Topic :: Software Development :: Libraries"
