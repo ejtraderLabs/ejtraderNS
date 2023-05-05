@@ -17,7 +17,7 @@ def requirements(filename):
 
 setup(
     name='ejtraderNS',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(),
     url='https://ejtraderNS.readthedocs.io/',
     download_url='https://github.com/ejtraderlabs/ejtraderNS',
