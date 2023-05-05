@@ -1,0 +1,5 @@
+requests
+feedparser
+tldextract
+langdetect
+textblob
