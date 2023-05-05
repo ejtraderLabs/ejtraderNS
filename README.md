@@ -1,7 +1,7 @@
 
 ![Pypi Publish](https://github.com/ejtraderLabs/ejtraderNS/actions/workflows/python-publish.yml/badge.svg)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ejtraderLabs/ejtraderNS)
-[![License](https://img.shields.io/github/license/ejtraderLabs/ejtradeNews)](https://github.com/ejtraderLabs/ejtraderNS/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/ejtraderLabs/ejtradeNS)](https://github.com/ejtraderLabs/ejtraderNS/blob/main/LICENSE)
 
 
 # ejtraderNS
