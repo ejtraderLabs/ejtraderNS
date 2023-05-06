@@ -107,44 +107,13 @@ output example:
 
 
 There is a limited set of topic that you might find:
+``` 'tech', 'news', 'business', 'science', 'finance', 'food', 'politics', 'economics', 'travel', 'entertainment', 'music', 'sport', 'world' ```
 
+extras topics only for [investing.com](https://www.investing.com)
 
-| News               | Analysis              |
-| ------------------ | --------------------- |
-| tech               | forex_analysis        |
-| news               | forex_technical       |
-| business           | forex_fundamental     |
-| science            | forex_opinion         |
-| finance            | forex_signal          |
-| food               | bonds_analysis        |
-| politics           | bonds_technical       |
-| economics          | bonds_fundamental     |
-| travel             | bonds_opinion         |
-| entertainment      | bonds_trategy         |
-| music              | bonds_government      |
-| sport              | bonds_corporate       |
-| world              | stock_analysis        |
-| popular            | stock_technical       |
-| crypto             | stock_fundamental     |
-| forex              | stock_opinion         |
-| stock              | stock_picks           |
-| commodities        | indices_analysis      |
-| central_bank       | futures_analysis      |
-|                    | options_analysis      |
-|                    | commodities_analysis  |
-|                    | commodities_technical |
-|                    | commodities_Fundamental|
-|                    | commodities_opinion   |
-|                    | commodities_strategy  |
-|                    | commodities_metals    |
-|                    | commodities_energy    |
-|                    | commodities_agriculture|
-|                    | overview_analysis     |
-|                    | overview_technical    |
-|                    | overview_fundamental  |
-|                    | overview_opinion      |
-|                    | overview_investing    |
-|                    | crypto_opinion        |
+``` 'crypto', 'forex', 'stock', 'commodities', 'central_bank', 'forex_analysis', 'forex_technical', 'forex_fundamental', 'forex_opinion', 'forex_signal', 'bonds_analysis', 'bonds_technical', 'bonds_fundamental', 'bonds_opinion', 'bonds_strategy', 'bonds_government', 'bonds_corporate', 'stock_analysis', 'stock_technical', 'stock_fundamental', 'stock_opinion', 'stock_picks', 'indices_analysis', 'futures_analysis', 'options_analysis', 'commodities_analysis', 'commodities_technical', 'commodities_Fundamental', 'commodities_opinion', 'commodities_strategy', 'commodities_metals', 'commodities_energy', 'commodities_agriculture', 'overview_analysis', 'overview_technical', 'overview_fundamental', 'overview_opinion', 'overview_investing', 'crypto_opinion'```
+  
+
 
 
 
@@ -266,27 +235,13 @@ Supported languages:
 
 
 
-
-
 ## Tech/framework used
 The package itself is nothing more than a SQLite database with 
 RSS feed endpoints for each website and some basic wrapper of
 [feedparser](https://pythonhosted.org/feedparser/index.html).
 
 
-## About Us
-We are ejtraderNS API team. We are glad that you liked our package.
+## Acknowledgements
 
-If you want to search for any news data, consider using [our API](https://ejtraderNSapi.com/)
+I would like to express my gratitude to [@kotartemiy](https://github.com/kotartemiy) for creating the initial project. Their work has been an invaluable starting point for my modifications and improvements.
 
-![](ejtraderNS_oneliner.png)
-
-
-[Artem Bugara]() - co-founder of ejtraderNS, made v.0.1.0
-
-[Maksym Sugonyaka](https://www.linkedin.com/mwlite/in/msugonyaka) - co-founder of ejtraderNS, made v.0.1.0
-
-[Becket Trotter](https://www.linkedin.com/in/beckettrotter/) - Python Developer, made v.0.2.0
-
-## Licence
-MIT
