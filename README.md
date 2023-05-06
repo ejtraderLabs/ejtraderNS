@@ -44,94 +44,109 @@ results = api.get_news()
 articles = results['articles']
 ```
 
-There is a limited set of topic that you might find:
-
-``` 'tech', 'news', 'business', 'science', 'finance', 'food', 'politics', 'economics', 'travel', 'entertainment', 'music', 'sport', 'world' ```
+Some websites support multiple countries, such as  [investing.com](https://www.investing.com) or [tradingeconomics.com](https://www.tradingeconomics.com)
 
 
-### some url supports multiple languages
+In this example, I will demonstrate a website that supports multiple languages,
+ retrieve all topics, and convert the data into a pandas dataframe.
+
+
 ```python
 import pandas as pd
-from ejtraderNS import Client, describe_url
+from ejtraderNS import Client
 from datetime import datetime
 
-country_topic = describe_url('investing.com')
-
-# Criando uma lista vazia para armazenar os DataFrames
+url = 'investing.com' # or tradingeconomics.com
+country = 'GB'
+country_topic = ["finance","news","economics"]
 dfs = []
 
-# Iterando pelos países, idiomas e tópicos
-
-    
-for topic in country_topic['topics']:
-    try:
-        api = Client(website="investing.com", topic=topic, country="BR")
-    except:
-        pass
+for topic in country_topic:
+    api = Client(website=url, topic=topic, country=country)
+    getdata = api.get_news()
     print(f"topic: {topic}")
-    
-    try:
-        getdata = api.get_news()
-    except:
-        pass
-    # Coletando os dados
-    
 
-    # Se getdata for None, pule para o próximo tópico
     if getdata is None:
         continue
 
-    # Criando uma lista vazia para armazenar as informações
     data = []
 
-    # Iterando pelos artigos e extraindo as informações relevantes
     for article in getdata['articles']:
-        article_data = {}
-        article_data['topic'] = getdata['topic']
-        article_data['author'] = article['author']
-        article_data['date'] = article['published_parsed'] if article['published_parsed'] else article['published']
-
-        article_data['country'] = getdata['country']
-        article_data['language'] = getdata['language']
-
-        article_data['title'] = article['title']
-        
-        try:
-            article_data['summary'] = article['summary']
-            article_data['url'] = article['link']
-        except:
-            article_data['url'] = None
-            article_data['summary'] = article['title']
-            pass
-        
+        article_data = {
+            'topic': getdata['topic'],
+            'author': article['author'],
+            'date': article['published_parsed'] if article['published_parsed'] else article['published'],
+            'country': getdata['country'],
+            'language': getdata['language'],
+            'title': article['title'],
+            'summary': article.get('summary', article['title'])
+        }
         data.append(article_data)
 
-    # Converter objetos time.struct_time para objetos datetime
-    for item in data:
-        try:
-            item['date'] = datetime(*item['date'][:6])
-        except:
-            pass
-    # Criando o dataframe com as informações extraídas
     df = pd.DataFrame(data)
-    df['date'] = pd.to_datetime(df['date'], utc=True)
-    df.set_index('date', inplace=True)
 
-    # Adicionando o DataFrame atual à lista de DataFrames
+    df['date'] = pd.to_datetime(df['date'].apply(lambda x: datetime(*x[:6]) if isinstance(x, tuple) else x), utc=True, errors='coerce')
+    df.set_index('date', inplace=True)
     dfs.append(df)
 
-# Concatenando todos os DataFrames na lista dfs
 df = pd.concat(dfs)
-
-# Reordenando o índice
 df.sort_index(inplace=True)
 print(df)
 
 ```
+output example:
 
-for investing.com  is a limited set of topic base on country 
+| topic     | author        | country   | language   | title                                                                            | summary                                                                          |
+|:----------|:--------------|:----------|:-----------|:---------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|
+| finance   | Reuters       | GB        | en         | Italy pushes to limit executive pay in listed state-run firms                    | Italy pushes to limit executive pay in listed state-run firms                    |
+| economics | Reuters       | GB        | en         | UK's Cleverly raises Xinjiang and Taiwan with Chinese vice president             | UK's Cleverly raises Xinjiang and Taiwan with Chinese vice president             |
+| news      | Reuters       | GB        | en         | Ukraine hails return of 45 Azov fighters, Russia says 3 pilots released          | Ukraine hails return of 45 Azov fighters, Russia says 3 pilots released          |
 
-``` 'news', 'crypto_news', 'forex_news', 'popular_news', 'commodities_news', 'stock_news', 'economic_indicators_news', 'economy_news', 'central_bank', 'crypto_opinion', 'forex_analysis', 'forex_technical', 'forex_fundamental', 'forex_opinion', 'forex_signal', 'overview_analysis', 'overview_technical', 'overview_fundamental', 'overview_opinion', 'overview_investing', 'commodities_analysis', 'commodities_technical', 'commodities_Fundamental', 'commodities_opinion', 'commodities_strategy', 'commodities_metals', 'commodities_energy', 'commodities_agriculture', 'bonds_analysis', 'bonds_technical', 'bonds_fundamental', 'bonds_opinion', 'bonds_trategy', 'bonds_government', 'bonds_corporate', 'stock_analysis', 'stock_technical', 'stock_fundamental', 'stock_opinion', 'stock_picks', 'stock', 'indices', 'futures', 'options', 'politics_news', 'world_news' ```
+
+
+
+
+There is a limited set of topic that you might find:
+
+
+| News               | Analysis              |
+| ------------------ | --------------------- |
+| tech               | forex_analysis        |
+| news               | forex_technical       |
+| business           | forex_fundamental     |
+| science            | forex_opinion         |
+| finance            | forex_signal          |
+| food               | bonds_analysis        |
+| politics           | bonds_technical       |
+| economics          | bonds_fundamental     |
+| travel             | bonds_opinion         |
+| entertainment      | bonds_trategy         |
+| music              | bonds_government      |
+| sport              | bonds_corporate       |
+| world              | stock_analysis        |
+| popular            | stock_technical       |
+| crypto             | stock_fundamental     |
+| forex              | stock_opinion         |
+| stock              | stock_picks           |
+| commodities        | indices_analysis      |
+| central_bank       | futures_analysis      |
+|                    | options_analysis      |
+|                    | commodities_analysis  |
+|                    | commodities_technical |
+|                    | commodities_Fundamental|
+|                    | commodities_opinion   |
+|                    | commodities_strategy  |
+|                    | commodities_metals    |
+|                    | commodities_energy    |
+|                    | commodities_agriculture|
+|                    | overview_analysis     |
+|                    | overview_technical    |
+|                    | overview_fundamental  |
+|                    | overview_opinion      |
+|                    | overview_investing    |
+|                    | crypto_opinion        |
+
+
 
 However, not all topics are supported by every newspaper.
 
