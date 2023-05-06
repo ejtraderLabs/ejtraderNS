@@ -1,9 +1,10 @@
 
 ![Pypi Publish](https://github.com/ejtraderLabs/ejtraderNS/actions/workflows/python-publish.yml/badge.svg)
+[![PyPI version](https://badge.fury.io/py/ejtraderns.svg)](https://badge.fury.io/py/ejtraderNS)
+[![PyPi downloads](https://img.shields.io/pypi/dm/ejtraderns?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/ejtraderns/)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ejtraderLabs/ejtraderNS)
 [![License](https://img.shields.io/github/license/ejtraderLabs/ejtraderNS)](https://github.com/ejtraderLabs/ejtraderNS/blob/main/LICENSE)
-
-
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 # ejtraderNS
 **Programmatically collect normalized news from (almost) any website.**
 
