@@ -47,8 +47,8 @@ articles = results['articles']
 Some websites support multiple countries, such as  [investing.com](https://www.investing.com) or [tradingeconomics.com](https://www.tradingeconomics.com)
 
 
-In this example, I will demonstrate a website that supports multiple languages,
- retrieve all topics, and convert the data into a pandas dataframe.
+In this example, I will demonstrate a website that supports multiple countries,
+ retrieve multiple topics, and convert the data into a pandas dataframe.
 
 
 ```python
